@@ -7,9 +7,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.imgurujeet.quoteapp.R
 
 @Composable
 fun HomeScreen(){
@@ -22,6 +25,7 @@ fun HomeScreen(){
                 "Explore ",
                 fontSize = 20.sp,
                 modifier = Modifier.padding(16.dp),
+                fontFamily = FontFamily(Font(R.font.poppins_bold)),
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )

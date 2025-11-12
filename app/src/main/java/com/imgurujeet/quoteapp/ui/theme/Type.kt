@@ -1,10 +1,13 @@
 package com.imgurujeet.quoteapp.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.imgurujeet.quoteapp.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -32,3 +35,27 @@ val Typography = Typography(
     )
     */
 )
+
+val Typography.Bold18: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 18.sp,
+            lineHeight = 24.sp,
+        )
+    }
+
+val Typography.Bold20: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+            lineHeight = 24.sp,
+
+        )
+    }
+
