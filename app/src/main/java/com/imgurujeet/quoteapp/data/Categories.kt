@@ -1,0 +1,67 @@
+package com.imgurujeet.quoteapp.data
+
+import android.graphics.drawable.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoGraph
+import androidx.compose.material.icons.filled.Business
+import androidx.compose.material.icons.filled.EnergySavingsLeaf
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Handshake
+import androidx.compose.material.icons.filled.Lightbulb
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Icon
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
+import com.imgurujeet.quoteapp.R
+
+
+
+data class Categories (
+    val categoryName: String,
+    val icon: ImageVector,
+    val color: Color
+)
+
+val categories = listOf<Categories>(
+    Categories(
+        categoryName = "Love",
+        icon = Icons.Filled.Favorite,
+        color = Color(0xFFE91E63)
+    ),
+    Categories(
+        categoryName = "Motivation",
+        icon = Icons.Filled.Star,
+        color = Color(0xFF1D64FC)
+    ),
+    Categories(
+        categoryName = "Success",
+        icon = Icons.Filled.AutoGraph,
+        color = Color(0xFF00D05A)
+    ),
+    Categories(
+        categoryName = "Wisdom",
+        icon = Icons.Filled.Lightbulb,
+        color = Color(0xFFEA8200)
+    ),
+
+    Categories(
+        categoryName = "Friendship",
+        icon = Icons.Filled.Handshake,
+        color = Color(0xFF5C0BFA)
+    ),
+    Categories(
+        categoryName = "Business",
+        icon = Icons.Filled.Business,
+        color = Color(0xFFFF3D00)
+    ),
+    Categories(
+        categoryName = "Life",
+        icon = Icons.Filled.EnergySavingsLeaf,
+        color = Color(0xFF00E676)
+    ),
+
+
+)

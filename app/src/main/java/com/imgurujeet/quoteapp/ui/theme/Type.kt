@@ -36,6 +36,19 @@ val Typography = Typography(
     */
 )
 
+
+val Typography.Bold24: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
 val Typography.Bold18: TextStyle
     @Composable
     get() {
@@ -59,3 +72,159 @@ val Typography.Bold20: TextStyle
         )
     }
 
+
+val Typography.Bold16: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+val Typography.Bold14: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+val Typography.Bold12: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.Bold,
+            fontSize = 12.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+// Poppins Semi Bold fonts
+
+val Typography.SemiBold20: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 20.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+val Typography.SemiBold18: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 18.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+
+val Typography.SemiBold16: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 16.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+
+
+
+
+val Typography.SemiBold14: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 14.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+
+val Typography.SemiBold12: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_bold)),
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 12.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+
+// Regular font
+
+val Typography.Regular14: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_regular)),
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+val Typography.Regular12: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_regular)),
+            fontWeight = FontWeight.Normal,
+            fontSize = 12.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+
+val Typography.Regular16: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_regular)),
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
+
+val Typography.Regular18: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = FontFamily(Font(R.font.poppins_regular)),
+            fontWeight = FontWeight.Normal,
+            fontSize = 18.sp,
+            lineHeight = 24.sp,
+
+            )
+    }
