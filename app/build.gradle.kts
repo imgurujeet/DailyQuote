@@ -60,9 +60,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.androidx.compose.material.extended)
 
-
+    //navigation
+    implementation(libs.androidx.compose.navigation)
     //coil to load image
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)

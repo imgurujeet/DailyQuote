@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.imgurujeet.quoteapp.presentation.home.HomeScreen
+import com.imgurujeet.quoteapp.presentation.navigation.AppNavigation
 import com.imgurujeet.quoteapp.ui.theme.DailyQuoteTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,10 +18,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
             DailyQuoteTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(modifier = Modifier.padding(innerPadding))
-                }
+                AppNavigation(navController)
             }
         }
     }

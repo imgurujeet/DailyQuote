@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
 import com.imgurujeet.quoteapp.presentation.components.BannerSlider
 import com.imgurujeet.quoteapp.presentation.components.CategoryCard
 import com.imgurujeet.quoteapp.presentation.components.QuoteCard
@@ -27,7 +29,7 @@ import com.imgurujeet.quoteapp.ui.theme.Regular14
 
 //@Preview(showBackground = true)
 @Composable
-fun HomeScreen(modifier: Modifier){
+fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
     LazyColumn(
         modifier = modifier.fillMaxSize()
     ) {
@@ -50,7 +52,10 @@ fun HomeScreen(modifier: Modifier){
 
         item {
             BannerSlider(
-                modifier = Modifier.padding(horizontal = 12.dp ,20.dp).clip(RoundedCornerShape(12.dp)).height(200.dp),
+                modifier = Modifier
+                    .padding(horizontal = 12.dp, 20.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .height(200.dp),
                 listOfBanners = dummyBanners
             )
 
@@ -60,21 +65,21 @@ fun HomeScreen(modifier: Modifier){
 
             SectionHeader(
                 title = "Latest Quotes",
-                onClick = {TODO()}
+                onClick = { TODO() }
             )
 
 
             LazyRow(
-                modifier = Modifier.padding( vertical = 14.dp)
+                modifier = Modifier.padding(vertical = 14.dp)
 
             ) {
-                items(dummyQuotes.size){quote->
+                items(dummyQuotes.size) { quote ->
                     val bgColor = cardColors[quote % cardColors.size]
                     QuoteCard(
                         modifier = Modifier.padding(horizontal = 12.dp),
                         quote = dummyQuotes[quote],
                         color = bgColor,
-                        onClick = {TODO()}
+                        onClick = { TODO() }
 
                     )
 
@@ -88,17 +93,17 @@ fun HomeScreen(modifier: Modifier){
             Spacer(Modifier.height(8.dp))
             SectionHeader(
                 title = "Categories",
-                onClick = {TODO()}
+                onClick = { TODO() }
             )
 
             LazyRow(
                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 14.dp)
-            ){
-                items(categories.size){category->
+            ) {
+                items(categories.size) { category ->
                     CategoryCard(
                         modifier = Modifier.padding(horizontal = 6.dp),
                         category = categories[category],
-                        onClick = ({TODO()})
+                        onClick = ({ TODO() })
                     )
                 }
 
@@ -110,21 +115,21 @@ fun HomeScreen(modifier: Modifier){
 
             SectionHeader(
                 title = "Trending Quotes",
-                onClick = {TODO()}
+                onClick = { TODO() }
             )
 
 
             LazyRow(
-                modifier = Modifier.padding( vertical = 14.dp)
+                modifier = Modifier.padding(vertical = 14.dp)
 
             ) {
-                items(dummyTrendingQuotes.size){quote->
+                items(dummyTrendingQuotes.size) { quote ->
                     val bgColor = cardColors[quote % cardColors.size]
                     QuoteCard(
                         modifier = Modifier.padding(horizontal = 12.dp),
                         quote = dummyTrendingQuotes[quote],
                         color = bgColor,
-                        onClick = {TODO()}
+                        onClick = { TODO() }
 
                     )
 
