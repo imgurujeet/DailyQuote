@@ -1,6 +1,6 @@
 package com.imgurujeet.quoteapp.presentation.components
 
-import android.R
+import android.R.attr.onClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,32 +30,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.imgurujeet.quoteapp.data.Quote
 import com.imgurujeet.quoteapp.ui.theme.Regular12
-import com.imgurujeet.quoteapp.ui.theme.Regular14
-import com.imgurujeet.quoteapp.ui.theme.SemiBold14
 import com.imgurujeet.quoteapp.ui.theme.SemiBold16
-import com.imgurujeet.quoteapp.ui.theme.SemiBold18
-import kotlin.random.Random
 
 @Composable
-fun QuoteCard(
+fun QuoteCardWide(
     modifier: Modifier,
     quote: Quote,
     color: Color,
     onShareClick: () -> Unit,
     onFavoriteClick: () -> Unit,
-    onCardClick: () -> Unit
 ){
     Card(
-        modifier = modifier
-            .width(220.dp)
-            .height(280.dp)
+        modifier = Modifier.fillMaxWidth()
+            //.height(280.dp)
             .clip(RoundedCornerShape(16.dp))
     ) {
 
@@ -69,7 +61,7 @@ fun QuoteCard(
                             color,
                             color.copy(alpha = 0.6f),
 
-                        )
+                            )
                     )
                 )
                 .padding(horizontal = 20.dp)
@@ -82,7 +74,7 @@ fun QuoteCard(
 
             ) {
                 Box(
-                    modifier = Modifier.size(45.dp).background(color = Color.White.copy(alpha = 0.05f), CircleShape)
+                    modifier = Modifier.size(30.dp).background(color = Color.White.copy(alpha = 0.05f), CircleShape)
 
                 ){}
                 Row(
@@ -90,13 +82,13 @@ fun QuoteCard(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly,
 
-                ){
+                    ){
                     Icon(
                         imageVector = Icons.Default.Share,
                         contentDescription = "Share",
                         tint = Color.White,
                         modifier = Modifier.clickable {
-                            onShareClick( /* TODO */)
+                            onShareClick()
                         }
                     )
                     Spacer(modifier = Modifier.width(10.dp))
@@ -105,22 +97,19 @@ fun QuoteCard(
                         contentDescription = "favorite",
                         tint = Color.White,
                         modifier = Modifier.clickable {
-                            onFavoriteClick( /* TODO */)
+                           onFavoriteClick()
                         }
                     )
                 }
 
 
             }
-            Spacer(modifier = Modifier.height(20.dp))
 
             Column(
                 modifier = Modifier.padding(all = 4.dp).fillMaxWidth().fillMaxHeight(0.8f)
-                    .clickable {
-                        onCardClick( /* TODO */)
-                    },
+                   ,
                 verticalArrangement = Arrangement.SpaceBetween,
-                horizontalAlignment = Alignment.Start
+                horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
                 Text(
@@ -138,29 +127,13 @@ fun QuoteCard(
                     color = Color.White,
                     textAlign = TextAlign.Left,
 
-
-                )
+                    )
             }
+            Spacer(modifier = Modifier.height(12.dp))
 
         }
 
 
     }
+
 }
-
-
-val cardColors = listOf(
-    Color(0xFF1E40AF),
-    Color(0xFF090C10),
-    Color(0xFF004D40),
-    Color(0xFF880E4F),
-    Color(0xFF4A148C),
-    Color(0xFF002641),
-    Color(0xFF1E40AF),
-    Color(0xFF090C10),
-    Color(0xFF004D40),
-    Color(0xFF880E4F),
-    Color(0xFF4A148C),
-    Color(0xFF002641),
-)
-

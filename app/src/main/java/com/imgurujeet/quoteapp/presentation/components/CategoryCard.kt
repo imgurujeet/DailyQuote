@@ -59,7 +59,7 @@ fun CategoryCard(
             ) {
                 Icon(
                     imageVector = category.icon,
-                    contentDescription = category.categoryName,
+                    contentDescription = category.categoryName.name,
                     modifier = Modifier.size(45.dp).padding(10.dp),
                     tint = category.color
                 )
@@ -67,7 +67,7 @@ fun CategoryCard(
             }
             Spacer(Modifier.height(10.dp))
             Text(
-                text = category.categoryName,
+                text = category.categoryName.name,
                 style = MaterialTheme.typography.Regular14,
                 color = MaterialTheme.colorScheme.onBackground,
             )

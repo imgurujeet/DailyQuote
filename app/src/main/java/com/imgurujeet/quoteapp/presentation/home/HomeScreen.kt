@@ -79,8 +79,9 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                         modifier = Modifier.padding(horizontal = 12.dp),
                         quote = dummyQuotes[quote],
                         color = bgColor,
-                        onClick = { TODO() }
-
+                        onShareClick = {TODO()},
+                        onFavoriteClick = {TODO()},
+                        onCardClick = {TODO()},
                     )
 
                 }
@@ -129,8 +130,9 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                         modifier = Modifier.padding(horizontal = 12.dp),
                         quote = dummyTrendingQuotes[quote],
                         color = bgColor,
-                        onClick = { TODO() }
-
+                        onShareClick = {TODO()},
+                        onFavoriteClick = {TODO()},
+                        onCardClick = {TODO()},
                     )
 
                 }
