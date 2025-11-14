@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -74,9 +75,19 @@ fun QuoteCardWide(
 
             ) {
                 Box(
-                    modifier = Modifier.size(30.dp).background(color = Color.White.copy(alpha = 0.05f), CircleShape)
+                    modifier = Modifier.background(color = Color.White.copy(alpha = 0.05f), RoundedCornerShape(8.dp))
 
-                ){}
+                ){
+                    Text(
+                        text = quote.category.name,
+                        style = MaterialTheme.typography.Regular12,
+                        textAlign = TextAlign.Center,
+                        fontStyle = FontStyle.Italic,
+                        color = Color.White.copy(alpha = 0.5f),
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 2.dp)
+                    )
+                }
+
                 Row(
                     Modifier.padding(10.dp),
                     verticalAlignment = Alignment.CenterVertically,

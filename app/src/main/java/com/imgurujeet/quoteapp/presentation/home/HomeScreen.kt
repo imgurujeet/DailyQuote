@@ -108,13 +108,13 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                         category = categories[category],
                         onClick = ({
                             //navHost.navigate(Screen.ExploreScreen.route)
-                            Log.d("Navigating to Explore", "HomeScreen: ${categories[category].categoryName.name}")
-                            navHost.navigate("${Screen.ExploreScreen.route}?category=${categories[category].categoryName.name}"){
+                            Log.d("Navigating to Explore", "HomeScreen: ${categories[category]}")
+                            navHost.navigate("${Screen.ExploreScreen.route}?category=${categories[category].categoryName}"){
                                 popUpTo(Screen.HomeScreen.route) {
                                     saveState = true
                                 }
                                 launchSingleTop = true
-                                restoreState = true
+                               // restoreState = true
 
                             }
                         })
