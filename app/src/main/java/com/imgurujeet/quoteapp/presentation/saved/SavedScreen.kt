@@ -33,7 +33,7 @@ fun SavedScreen(navHost: NavHostController, modifier: Modifier){
             modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 10.dp)
         ) {
             Text(
-                text = "Your Saved Quotes",
+                text = "Saved Quotes",
                 style = MaterialTheme.typography.Bold24
             )
 

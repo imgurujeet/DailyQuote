@@ -1,5 +1,6 @@
 package com.imgurujeet.quoteapp.presentation.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,7 +32,10 @@ fun SectionHeader(
         Text(
             "See All",
             style = MaterialTheme.typography.Regular14,
-            color = MaterialTheme.colorScheme.primary
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.clickable {
+                onClick()
+            }
         )
 
     }

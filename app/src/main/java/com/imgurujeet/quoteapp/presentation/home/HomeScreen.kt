@@ -1,5 +1,6 @@
 package com.imgurujeet.quoteapp.presentation.home
 
+import android.util.Log
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -24,6 +25,7 @@ import com.imgurujeet.quoteapp.data.categories
 import com.imgurujeet.quoteapp.data.dummyBanners
 import com.imgurujeet.quoteapp.data.dummyQuotes
 import com.imgurujeet.quoteapp.data.dummyTrendingQuotes
+import com.imgurujeet.quoteapp.presentation.navigation.Screen
 import com.imgurujeet.quoteapp.ui.theme.Bold24
 import com.imgurujeet.quoteapp.ui.theme.Regular14
 
@@ -94,7 +96,7 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
             Spacer(Modifier.height(8.dp))
             SectionHeader(
                 title = "Categories",
-                onClick = { TODO() }
+                onClick = { navHost.navigate(Screen.ExploreScreen.route) }
             )
 
             LazyRow(
@@ -104,13 +106,23 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                     CategoryCard(
                         modifier = Modifier.padding(horizontal = 6.dp),
                         category = categories[category],
-                        onClick = ({ TODO() })
+                        onClick = ({
+                            //navHost.navigate(Screen.ExploreScreen.route)
+                            Log.d("Navigating to Explore", "HomeScreen: ${categories[category].categoryName.name}")
+                            navHost.navigate("${Screen.ExploreScreen.route}?category=${categories[category].categoryName.name}"){
+                                popUpTo(Screen.HomeScreen.route) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+
+                            }
+                        })
                     )
                 }
 
             }
         }
-
 
         item {
 

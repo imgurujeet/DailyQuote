@@ -6,12 +6,13 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.savedstate.savedState
 
 @Composable
-fun BottomNavBar(navHost: NavHostController){
+fun BottomNavBar(navHost: NavHostController) {
 
     val items = listOf(
         Screen.HomeScreen,
@@ -20,7 +21,8 @@ fun BottomNavBar(navHost: NavHostController){
     )
 
     val navBackStackEntry by navHost.currentBackStackEntryAsState()
-    val currentRole = navBackStackEntry?.destination?.route
+    //val currentRole = navBackStackEntry?.destination?.route
+    val currentDestination = navBackStackEntry?.destination
 
 
     NavigationBar {
@@ -35,17 +37,14 @@ fun BottomNavBar(navHost: NavHostController){
                 label = {
                     Text(text = screen.title)
                 },
-                selected = currentRole == screen.route,
+                selected = currentDestination?.hierarchy?.any { it.route?.substringBefore('?') == screen.route } == true,
                 onClick = {
-                    if (currentRole != screen.route) {
-                        navHost.navigate(screen.route){
-                            popUpTo(navHost.graph.startDestinationId){
-                                saveState = true
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-
+                    navHost.navigate(screen.route) {
+                        popUpTo(navHost.graph.startDestinationId) {
+                            saveState = true
                         }
+                        launchSingleTop = true
+                        restoreState = true
 
                     }
                 }

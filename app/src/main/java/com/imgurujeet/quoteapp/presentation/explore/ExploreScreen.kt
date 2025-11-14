@@ -1,9 +1,7 @@
 package com.imgurujeet.quoteapp.presentation.explore
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,24 +11,32 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.imgurujeet.quoteapp.data.Category
 import com.imgurujeet.quoteapp.data.dummyQuotes
-import com.imgurujeet.quoteapp.presentation.components.QuoteCard
 import com.imgurujeet.quoteapp.presentation.components.QuoteCardWide
 import com.imgurujeet.quoteapp.presentation.components.cardColors
 import com.imgurujeet.quoteapp.ui.theme.Bold24
 import com.imgurujeet.quoteapp.ui.theme.Regular14
-import com.imgurujeet.quoteapp.ui.theme.SemiBold18
-import com.imgurujeet.quoteapp.ui.theme.SemiBold20
+import androidx.compose.runtime.setValue
 
 @Composable
-fun ExploreScreen(  navHost: NavHostController, modifier: Modifier){
+fun ExploreScreen(  navHost: NavHostController, modifier: Modifier, selectedCategoryNav: Category? = null){
+
+    var selectedCategory by remember { mutableStateOf(selectedCategoryNav) }
+
+    val filterQuotes = if (selectedCategory != null) {
+        dummyQuotes.filter { it.category == selectedCategory }
+    } else {
+        dummyQuotes
+    }
+
+
 
     Column(
         modifier = modifier.fillMaxSize(),
@@ -49,8 +55,15 @@ fun ExploreScreen(  navHost: NavHostController, modifier: Modifier){
                val categories = Category.entries
                items(categories.size){ category ->
                    FilterChip(
-                       selected = false,
-                       onClick = { /*TODO*/ },
+                       selected = (selectedCategory == categories[category]),
+                       onClick = {
+                           if (selectedCategory != categories[category]) {
+                               selectedCategory = categories[category]
+                           } else {
+                               selectedCategory = null
+                           }
+
+                       },
                        label = {
                            Text(
                                text = categories[category].name,
@@ -68,17 +81,18 @@ fun ExploreScreen(  navHost: NavHostController, modifier: Modifier){
 
            }
 
+
            LazyColumn(
                modifier = Modifier.padding(vertical = 14.dp),
                verticalArrangement = Arrangement.spacedBy(12.dp)
 
            ) {
 
-               items(dummyQuotes.size) { quote ->
+               items(filterQuotes.size) { quote ->
                    val bgColor = cardColors[quote % cardColors.size]
                    QuoteCardWide(
                        modifier = Modifier.padding(horizontal = 12.dp),
-                       quote = dummyQuotes[quote],
+                       quote = filterQuotes[quote],
                        color = bgColor,
                        onShareClick = {TODO()},
                        onFavoriteClick = {TODO()},
