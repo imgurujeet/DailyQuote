@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Card
@@ -104,7 +105,7 @@ fun QuoteCardWide(
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                     Icon(
-                        imageVector = Icons.Default.FavoriteBorder,
+                        imageVector = if(quote.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                         contentDescription = "favorite",
                         tint = Color.White,
                         modifier = Modifier.clickable {

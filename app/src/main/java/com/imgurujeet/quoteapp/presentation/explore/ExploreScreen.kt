@@ -24,6 +24,9 @@ import com.imgurujeet.quoteapp.presentation.components.cardColors
 import com.imgurujeet.quoteapp.ui.theme.Bold24
 import com.imgurujeet.quoteapp.ui.theme.Regular14
 import androidx.compose.runtime.setValue
+import com.imgurujeet.quoteapp.data.dummyQuotesList
+import com.imgurujeet.quoteapp.data.favoritesList
+import com.imgurujeet.quoteapp.data.toggleFavorite
 
 @Composable
 fun ExploreScreen(  navHost: NavHostController, modifier: Modifier, selectedCategoryNav: Category? = null){
@@ -95,7 +98,7 @@ fun ExploreScreen(  navHost: NavHostController, modifier: Modifier, selectedCate
                        quote = filterQuotes[quote],
                        color = bgColor,
                        onShareClick = {TODO()},
-                       onFavoriteClick = {TODO()},
+                       onFavoriteClick = { toggleFavorite(dummyQuotesList[quote],dummyQuotesList, favoritesList)},
                    )
 
                }

@@ -1,6 +1,7 @@
 package com.imgurujeet.quoteapp.presentation.home
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -13,8 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import com.imgurujeet.quoteapp.presentation.components.BannerSlider
 import com.imgurujeet.quoteapp.presentation.components.CategoryCard
@@ -23,8 +24,9 @@ import com.imgurujeet.quoteapp.presentation.components.SectionHeader
 import com.imgurujeet.quoteapp.presentation.components.cardColors
 import com.imgurujeet.quoteapp.data.categories
 import com.imgurujeet.quoteapp.data.dummyBanners
-import com.imgurujeet.quoteapp.data.dummyQuotes
-import com.imgurujeet.quoteapp.data.dummyTrendingQuotes
+import com.imgurujeet.quoteapp.data.dummyQuotesList
+import com.imgurujeet.quoteapp.data.favoritesList
+import com.imgurujeet.quoteapp.data.toggleFavorite
 import com.imgurujeet.quoteapp.presentation.navigation.Screen
 import com.imgurujeet.quoteapp.ui.theme.Bold24
 import com.imgurujeet.quoteapp.ui.theme.Regular14
@@ -32,6 +34,8 @@ import com.imgurujeet.quoteapp.ui.theme.Regular14
 //@Preview(showBackground = true)
 @Composable
 fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
+
+    val context = LocalContext.current
     LazyColumn(
         modifier = modifier.fillMaxSize()
     ) {
@@ -75,15 +79,18 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                 modifier = Modifier.padding(vertical = 14.dp)
 
             ) {
-                items(dummyQuotes.size) { quote ->
+                items(dummyQuotesList.size) { quote ->
                     val bgColor = cardColors[quote % cardColors.size]
                     QuoteCard(
                         modifier = Modifier.padding(horizontal = 12.dp),
-                        quote = dummyQuotes[quote],
+                        quote = dummyQuotesList[quote],
                         color = bgColor,
-                        onShareClick = {TODO()},
-                        onFavoriteClick = {TODO()},
-                        onCardClick = {TODO()},
+                        onShareClick = { TODO() },
+                        onFavoriteClick = {
+                            toggleFavorite(dummyQuotesList[quote],dummyQuotesList, favoritesList)
+                            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+                        },
+                        onCardClick = {},
                     )
 
                 }
@@ -109,12 +116,12 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                         onClick = ({
                             //navHost.navigate(Screen.ExploreScreen.route)
                             Log.d("Navigating to Explore", "HomeScreen: ${categories[category]}")
-                            navHost.navigate("${Screen.ExploreScreen.route}?category=${categories[category].categoryName}"){
+                            navHost.navigate("${Screen.ExploreScreen.route}?category=${categories[category].categoryName}") {
                                 popUpTo(Screen.HomeScreen.route) {
                                     saveState = true
                                 }
                                 launchSingleTop = true
-                               // restoreState = true
+                                // restoreState = true
 
                             }
                         })
@@ -136,15 +143,22 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                 modifier = Modifier.padding(vertical = 14.dp)
 
             ) {
-                items(dummyTrendingQuotes.size) { quote ->
+                items(dummyQuotesList.size) { quote ->
                     val bgColor = cardColors[quote % cardColors.size]
                     QuoteCard(
                         modifier = Modifier.padding(horizontal = 12.dp),
-                        quote = dummyTrendingQuotes[quote],
+                        quote = dummyQuotesList[quote],
                         color = bgColor,
-                        onShareClick = {TODO()},
-                        onFavoriteClick = {TODO()},
-                        onCardClick = {TODO()},
+                        onShareClick = { TODO() },
+                        onFavoriteClick = {
+
+                            toggleFavorite(dummyQuotesList[quote],dummyQuotesList, favoritesList)
+//                            dummyQuotesList[quote] = dummyQuotesList[quote].copy(
+//                                isFavorite = !dummyQuotesList[quote].isFavorite
+//                            )
+                            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+                        },
+                        onCardClick = { TODO() },
                     )
 
                 }
