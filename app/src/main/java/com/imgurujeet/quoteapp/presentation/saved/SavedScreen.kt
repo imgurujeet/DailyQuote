@@ -63,7 +63,7 @@ fun SavedScreen(navHost: NavHostController, modifier: Modifier) {
 
 
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize().padding(horizontal = 12.dp),
 
         ) {
         Column(

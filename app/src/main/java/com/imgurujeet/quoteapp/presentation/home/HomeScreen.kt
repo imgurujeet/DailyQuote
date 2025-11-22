@@ -103,7 +103,16 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
             Spacer(Modifier.height(8.dp))
             SectionHeader(
                 title = "Categories",
-                onClick = { navHost.navigate(Screen.ExploreScreen.route) }
+                onClick = {
+                    navHost.navigate(Screen.ExploreScreen.route){
+                        popUpTo(Screen.HomeScreen.route){
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+
+                }
             )
 
             LazyRow(
@@ -153,9 +162,6 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                         onFavoriteClick = {
 
                             toggleFavorite(dummyQuotesList[quote],dummyQuotesList, favoritesList)
-//                            dummyQuotesList[quote] = dummyQuotesList[quote].copy(
-//                                isFavorite = !dummyQuotesList[quote].isFavorite
-//                            )
                             Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
                         },
                         onCardClick = { TODO() },

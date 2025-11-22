@@ -33,10 +33,11 @@ fun ExploreScreen(  navHost: NavHostController, modifier: Modifier, selectedCate
 
     var selectedCategory by remember { mutableStateOf(selectedCategoryNav) }
 
+
     val filterQuotes = if (selectedCategory != null) {
-        dummyQuotes.filter { it.category == selectedCategory }
+        dummyQuotesList.filter { it.category == selectedCategory }
     } else {
-        dummyQuotes
+        dummyQuotesList
     }
 
 
@@ -98,7 +99,7 @@ fun ExploreScreen(  navHost: NavHostController, modifier: Modifier, selectedCate
                        quote = filterQuotes[quote],
                        color = bgColor,
                        onShareClick = {TODO()},
-                       onFavoriteClick = { toggleFavorite(dummyQuotesList[quote],dummyQuotesList, favoritesList)},
+                       onFavoriteClick = { toggleFavorite(filterQuotes[quote],dummyQuotesList, favoritesList)},
                    )
 
                }
