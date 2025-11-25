@@ -88,7 +88,12 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                         onShareClick = { TODO() },
                         onFavoriteClick = {
                             toggleFavorite(dummyQuotesList[quote],dummyQuotesList, favoritesList)
-                            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+                            if(dummyQuotesList[quote].isFavorite){
+                                Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+
+                            }else{
+                                Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+                            }
                         },
                         onCardClick = {},
                     )
@@ -162,7 +167,12 @@ fun HomeScreen(navHost: NavHostController, modifier: Modifier) {
                         onFavoriteClick = {
 
                             toggleFavorite(dummyQuotesList[quote],dummyQuotesList, favoritesList)
-                            Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+                            if(dummyQuotesList[quote].isFavorite){
+                                Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+
+                            }else{
+                                Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+                            }
                         },
                         onCardClick = { TODO() },
                     )

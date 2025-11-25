@@ -1,5 +1,6 @@
 package com.imgurujeet.quoteapp.presentation.explore
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,6 +25,7 @@ import com.imgurujeet.quoteapp.presentation.components.cardColors
 import com.imgurujeet.quoteapp.ui.theme.Bold24
 import com.imgurujeet.quoteapp.ui.theme.Regular14
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import com.imgurujeet.quoteapp.data.dummyQuotesList
 import com.imgurujeet.quoteapp.data.favoritesList
 import com.imgurujeet.quoteapp.data.toggleFavorite
@@ -31,7 +33,9 @@ import com.imgurujeet.quoteapp.data.toggleFavorite
 @Composable
 fun ExploreScreen(  navHost: NavHostController, modifier: Modifier, selectedCategoryNav: Category? = null){
 
+    val context = LocalContext.current
     var selectedCategory by remember { mutableStateOf(selectedCategoryNav) }
+
 
 
     val filterQuotes = if (selectedCategory != null) {
@@ -99,7 +103,13 @@ fun ExploreScreen(  navHost: NavHostController, modifier: Modifier, selectedCate
                        quote = filterQuotes[quote],
                        color = bgColor,
                        onShareClick = {TODO()},
-                       onFavoriteClick = { toggleFavorite(filterQuotes[quote],dummyQuotesList, favoritesList)},
+                       onFavoriteClick = { toggleFavorite(filterQuotes[quote],dummyQuotesList, favoritesList)
+                           if(dummyQuotesList[quote].isFavorite){
+                               Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
+
+                           }else{
+                               Toast.makeText(context, "Removed from favorites", Toast.LENGTH_SHORT).show()
+                           } },
                    )
 
                }
